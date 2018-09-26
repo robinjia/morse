@@ -28,10 +28,9 @@ class Morse(object):
       inputs = self.prep_input_fields(True)
       input_dict = self.prep_input_dict()
       output_values = self.query_func(**input_dict)
-      print(output_values)
-      outputs = [(y, output_values[y['name']]) for y in self.config['outputs']]
-      return flask.render_template('query.html', title=self.config['title'],
-                                   inputs=inputs, outputs=outputs)
+      return flask.render_template(
+          'query.html', title=self.config['title'], inputs=inputs,
+          output_config=self.config['outputs'], output_values=output_values)
 
   def prep_input_fields(self, use_request):
     cur_cols = 0
@@ -44,7 +43,7 @@ class Morse(object):
       else:
         new_row = False
       if use_request:
-        value = TYPE_FUNCTIONS[x['type']](flask.request.form[x['name']].strip())
+        value = self.get_value(x)
       elif 'default' in x:
         value = x['default']
       else:
@@ -53,8 +52,12 @@ class Morse(object):
     return inputs
 
   def prep_input_dict(self):
-    return {x['name']: flask.request.form[x['name']]
+    return {x['name']: self.get_value(x)
             for x in self.config['inputs']}
+
+  def get_value(self, x_config):
+    return TYPE_FUNCTIONS[x_config['type']](
+        flask.request.form[x_config['name']].strip())
 
   def serve(self, port=None):
     if not port:

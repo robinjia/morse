@@ -1,3 +1,22 @@
-{% for x, val in outputs %}
-<p> {{x['display']}}: <b>{{val}}</b><p>
+{% for x in output_config %}
+  {% if x['type'] == 'list' %}
+  <h5>{{x['display']}}</h5>
+  <ol>
+    {% for elem in output_values[x['name']] %}
+      {% with %}
+        {% set output_config = x['fields'] %}
+        {% set output_values = elem %}
+        <li> <p>{% include "result.html" %}</p>
+      {% endwith %}
+    {% endfor %}
+  </ol>
+  {% else %}
+    {{x['display']}}:
+    {% if x['type'] == 'float' %}
+    <b>{{'%.6f' % output_values[x['name']]}}</b>
+    {% else %}
+      <b>{{output_values[x['name']]}}</b>
+    {% endif %}
+    <br/>
+  {% endif %}
 {% endfor %}

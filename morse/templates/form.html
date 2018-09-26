@@ -3,9 +3,11 @@
 	{% for x, val, new_row in inputs %}
     <div class="form-group col-md-{{x['bootstrap-cols']}}">
       <label for="{{x['name']}}">{{x['display']}}</label>
-			{% if x['type'] == 'string' %}
-				<input name="{{x['name']}}" class="form-control" value="{{val | safe}}">
-			{% endif %}
+    {% if x['type'] == 'string' %}
+      <input name="{{x['name']}}" class="form-control" value="{{val | safe}}">
+    {% else %}
+      <input name="{{x['name']}}" class="form-control" value="{{val | safe}}" type="number">
+    {% endif %}
     </div>
 	{% if new_row %}
 	</div>
