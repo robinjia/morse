@@ -1,0 +1,11 @@
+title: morse - minimal example
+inputs:
+  - name: x
+    display: Input
+    type: string
+    bootstrap-cols: 12
+outputs:
+  - name: y
+    display: Output
+    type: string
+    bootstrap-cols: 12
