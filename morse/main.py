@@ -3,8 +3,8 @@ from flask import Flask
 import yaml
 
 DEFAULT_PORT = 9090
-DEFAULT_VALUES = {'string': '', 'integer': 0, 'float': 0.0}
-TYPE_FUNCTIONS = {'string': str, 'integer': int, 'float': float}
+DEFAULT_VALUES = {'string': '', 'textarea': '', 'integer': 0, 'float': 0.0}
+TYPE_FUNCTIONS = {'string': str, 'textarea': str, 'integer': int, 'float': float}
 BOOTSTRAP_MAX_COLS = 12
 
 class Morse(object):

@@ -15,18 +15,14 @@ inputs:
     display: Second input
     type: integer
     bootstrap-cols: 3
-    default: 1
-    min: 1
-    max: 100
+    default: 10
 outputs:
   - name: y1
     display: First output
     type: string
-    bootstrap-cols: 12
   - name: y2
     display: Second output
     type: float
-    bootstrap-cols: 12
 ```
 
 Now write some code to get predictions out of your model and start the server: 
