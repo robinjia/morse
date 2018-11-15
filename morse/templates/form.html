@@ -8,11 +8,11 @@
     <div class="form-group col-md-{{x['bootstrap-cols']}}">
       <label for="{{x['name']}}">{{x['display']}}</label>
     {% if x['type'] == 'string' %}
-      <input name="{{x['name']}}" class="form-control" value="{{val | safe}}">
+      <input name="{{x['name']}}" class="form-control form-control-sm" value="{{val | safe}}">
     {% elif x['type'] == 'textarea' %}
-      <textarea name="{{x['name']}}" class="form-control" rows="{{x['rows']}}">{{val | safe}}</textarea>
+      <textarea name="{{x['name']}}" class="form-control form-control-sm" rows="{{x['rows']}}">{{val | safe}}</textarea>
     {% else %}
-      <input name="{{x['name']}}" class="form-control" value="{{val | safe}}" type="number">
+      <input name="{{x['name']}}" class="form-control form-control-sm" value="{{val | safe}}" type="number">
     {% endif %}
     </div>
 	{% endfor %}
