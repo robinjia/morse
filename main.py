@@ -62,4 +62,4 @@ class Morse(object):
   def serve(self, port=None):
     if not port:
       port = DEFAULT_PORT
-    self.app.run(port=port, debug=True)
+    self.app.run('0.0.0.0', port=port, debug=True)
