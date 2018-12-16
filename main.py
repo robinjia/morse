@@ -59,7 +59,7 @@ class Morse(object):
     return TYPE_FUNCTIONS[x_config['type']](
         flask.request.form[x_config['name']].strip())
 
-  def serve(self, port=None):
+  def serve(self, port=None, debug=False):
     if not port:
       port = DEFAULT_PORT
-    self.app.run('0.0.0.0', port=port, debug=True)
+    self.app.run('0.0.0.0', port=port, debug=debug)
