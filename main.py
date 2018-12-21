@@ -23,8 +23,8 @@ class Morse(object):
       return flask.render_template('index.html', title=self.config['title'],
                                    inputs=inputs)
 
-    @self.app.route('/post_query', methods=['post'])
-    def post_query():
+    @self.app.route('/query', methods=['post'])
+    def query():
       inputs = self.prep_input_fields(True)
       input_dict = self.prep_input_dict()
       output_values = self.query_func(**input_dict)
