@@ -32,6 +32,13 @@ class Morse(object):
           'query.html', title=self.config['title'], inputs=inputs,
           output_config=self.config['outputs'], output_values=output_values)
 
+    @self.app.route('/raw', methods=['post'])
+    def query_raw():
+      print(flask.request.data)
+      input_dict = flask.request.get_json()
+      output_values = self.query_func(**input_dict)
+      return flask.jsonify(output_values)
+
   def prep_input_fields(self, use_request):
     cur_cols = 0
     inputs = []
