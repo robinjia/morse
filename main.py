@@ -4,7 +4,7 @@ import yaml
 
 DEFAULT_PORT = 9090
 DEFAULT_VALUES = {'string': '', 'textarea': '', 'integer': 0, 'float': 0.0}
-TYPE_FUNCTIONS = {'string': str, 'textarea': str, 'integer': int, 'float': float}
+TYPE_FUNCTIONS = {'string': lambda x: x, 'textarea': lambda x: x, 'integer': int, 'float': float}
 BOOTSTRAP_MAX_COLS = 12
 
 class Morse(object):
